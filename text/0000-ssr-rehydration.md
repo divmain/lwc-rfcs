@@ -12,7 +12,7 @@ pr: (leave this empty until the PR is created)
 
 Whereas server-side rendering (SSR) allows a web application to be rendered into HTML on the server, rehydration involves receiving that HTML on the client and reusing the resulting DOM during client-side rendering (CSR).
 
-This document proposes an approach to provide SSR rehydration in LWC.
+This document proposes an approach to supporting SSR rehydration in LWC.
 
 ## Problem description
 
@@ -104,7 +104,7 @@ document
 After the proposed change, if a developer wants to take advantage of rehydration, a developer would instead do:
 
 ```javascript
-import { hydrateElement } from '@lwc/ssr';
+import { hydrateElement } from 'lwc';
 import MyApp from './my-app';
 
 hydrateElement(MyApp, document.querySelector('#root')); 
@@ -182,7 +182,7 @@ For performance reasons, Vue will also not repair mismatching HTML during rehydr
 
 Most framework authors have indicated that non-support for rehydration resilience is due to performance reasons. We should measure the performance impact of SSR rehydration in a large LWC app to either 1) validate our design decision, or 2) point us in a new direction.
 
-# How we teach this
+## # How we teach this
 
 Much like the new functionality itself, the documentation for this functionality is mostly an add-on. We won't be changing how anything works and we won't need to explain existing functionality any differently.
 
