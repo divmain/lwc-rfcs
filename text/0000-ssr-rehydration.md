@@ -264,6 +264,9 @@ Additionally, if we determine that the performance impact is too great, a soluti
   + Non-deterministic ordering of lifecycle hooks or element hydration could result in undefined behavior.
   + If `customElement.define` is called after `hydrateElement`, hydration could be ignorant of the class backing `<x-element>`. This could result in an incomplete or incorrect hydration.
   + Strange interactions with shadow closed mode might be an issue.
+- **What edge cases does support for Light DOM introduce?**
+- **What is our approach for supporting declarative shadow DOM?**
+  + We believe that critical stakeholders will want full support here. But lack of cross-browser support for declarative shadow DOM may make this tricky.
 
 ## How we teach this
 
