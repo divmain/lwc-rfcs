@@ -259,14 +259,16 @@ Additionally, if we determine that the performance impact is too great, a soluti
 
 # Unresolved questions
 
+- **What is our approach for supporting declarative shadow DOM?**
+  + We believe that critical stakeholders will want full support here. But lack of cross-browser support for declarative shadow DOM may make this tricky.
 - **How do we handle invocations of `customElement.define` with SSR-serialized custom elements already in the DOM?**
   + If `customElement.define` is called before `hydrateElement`, the browser will "hydrate" those elements itself, and information baked into the SSR-sourced DOM could be lost.
   + Non-deterministic ordering of lifecycle hooks or element hydration could result in undefined behavior.
   + If `customElement.define` is called after `hydrateElement`, hydration could be ignorant of the class backing `<x-element>`. This could result in an incomplete or incorrect hydration.
   + Strange interactions with shadow closed mode might be an issue.
 - **What edge cases does support for Light DOM introduce?**
-- **What is our approach for supporting declarative shadow DOM?**
-  + We believe that critical stakeholders will want full support here. But lack of cross-browser support for declarative shadow DOM may make this tricky.
+- **How should constructable stylesheets be rehydrated?**
+  + Assuming no special handling, SSR may generate different HTML than is generated during CSR, possibly resulting in something like a [FOUC](https://en.wikipedia.org/wiki/Flash_of_unstyled_content) as styles are replaced.
 
 ## How we teach this
 
